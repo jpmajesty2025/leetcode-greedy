@@ -1,6 +1,6 @@
 # String Replace vs. Pure Arithmetic: A 25x Surprise (Part 2 of 2) 🧮
 
-In Part 1, we solved LeetCode 1323 (Maximum 69 Number) with a single `str.replace(..., 1)`.
+In Part 1, we solved Maximum 69 Number with a single `str.replace(..., 1)`.
 
 A common objection: "Converting to a string is cheating. Do it with math."
 
