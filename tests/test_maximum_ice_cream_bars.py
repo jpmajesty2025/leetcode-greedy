@@ -1,14 +1,8 @@
 import pytest
 from hypothesis import given, settings, strategies as st
 
-import maximum_ice_cream_bars as orig_module
 import maximum_ice_cream_bars_counting as counting_module
 import maximum_ice_cream_bars_sorted as sorted_module
-
-
-def original(costs, coins):
-    """The original takes a stray `self`; pass None so we can test the algorithm itself."""
-    return orig_module.max_ice_cream(None, list(costs), coins)
 
 
 def counting(costs, coins):
@@ -19,7 +13,7 @@ def sorted_impl(costs, coins):
     return sorted_module.max_ice_cream(list(costs), coins)
 
 
-IMPLS = [original, counting, sorted_impl]
+IMPLS = [counting, sorted_impl]
 
 
 def brute_force(costs: list[int], coins: int) -> int:
@@ -76,24 +70,13 @@ def test_does_not_mutate_input(impl):
     assert costs == [4, 1, 3, 2, 1]
 
 
-@pytest.mark.xfail(
-    strict=True,
-    raises=TypeError,
-    reason="Known: max_ice_cream has a stray `self` parameter (a LeetCode class-method paste), "
-    "so calling max_ice_cream(costs, coins) raises TypeError.",
-)
-def test_original_is_callable_with_just_costs_and_coins():
-    assert orig_module.max_ice_cream([1, 3, 2, 4, 1], 7) == 4
-
-
-@pytest.mark.parametrize("impl", [original, counting])
+@pytest.mark.parametrize("impl", IMPLS)
 def test_zero_cost_bars_are_free(impl):
     assert impl([0, 0, 3], 0) == 2
     assert impl([0, 5], 4) == 1
 
 
-def test_sorted_impl_handles_zero_cost_and_huge_prices():
-    assert sorted_impl([0, 0, 3], 0) == 2
+def test_sorted_impl_handles_huge_prices():
     assert sorted_impl([10**12, 10**12 + 1, 5], 10**12) == 1  # sparse range: no bucket array needed
 
 

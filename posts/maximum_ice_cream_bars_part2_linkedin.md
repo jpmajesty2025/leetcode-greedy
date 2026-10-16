@@ -2,12 +2,9 @@
 
 In Part 1, we solved Maximum Ice Cream Bars with the counting sort the problem hints at.
 
-I benchmarked three versions:
-1. **Original**: counting sort, bars bought one at a time, no early exit.
-2. **Refactored Counting**: one `min(count, coins // price)` step per price, and it stops once a price group can't be fully afforded.
-3. **Sorted**: `sorted(costs)` plus a cheapest-first loop, with no assumptions about the price range.
-
-All three return identical answers on every test.
+Benchmarks for two versions:
+1. **Counting Sort**: one `min(count, coins // price)` step per price, and it stops once a price group can't be fully afforded.
+2. **Sorted**: `sorted(costs)` plus a cheapest-first loop, with no assumptions about the price range.
 
 ---
 
