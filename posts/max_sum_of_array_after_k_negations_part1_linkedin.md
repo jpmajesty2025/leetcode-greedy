@@ -3,7 +3,7 @@
 **The Problem**:
 You must negate exactly `k` elements of an array. You choose the index each time, and you may pick the same index more than once.
 
-What is the largest possible sum afterward? (LeetCode 1005)
+What is the largest possible sum afterward?
 
 ---
 
