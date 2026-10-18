@@ -33,17 +33,6 @@ An exchange argument:
 
 ---
 
-### 🔍 Quality Review
-
-The original is correct and I confirmed the LeetCode examples (1 and -1). It also does not modify the input, because it sorts its own list of intervals. The docstring's claim holds this time.
-
-Small improvements:
-- **Negative ranges were silently accepted.** A tap cannot have a negative reach, so this is now a `ValueError`, like the existing checks for negative `n` and a wrong-length list.
-- **Cleanup.** I removed a trailing-whitespace line and replaced `lambda x: x[0]` with a more descriptive name. A comment now says the sort is on a local copy.
-- The edge case `n = 0` correctly returns 0 without opening anything.
-
----
-
 ### 📊 Complexity
 
 - **Time:** O(n log n), dominated by the sort
